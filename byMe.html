@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的网站</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+li {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.title {
+  padding: 10px;
+  text-align: center;
+}
+
+.title a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.title a:hover {
+  color: #FF0000;
+}
+
+.back-btn {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.back-btn a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn a:hover {
+  background-color: #555;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <ul>
+    <li>
+      <a href="fish/index.html">
+        <img src="img/buyudaren.jpg" alt="捕鱼达人">
+      </a>
+      <div class="title"><a href="fish/index.html">捕鱼达人</a></div>
+    </li>
+    <li>
+      <a href="mario/index.html">
+        <img src="img/mario.jpg" alt="超级玛丽奥">
+      </a>
+      <div class="title"><a href="mario/index.html">超级玛丽奥</a></div>
+    </li>
+    <li>
+      <a href="furit/index.html">
+        <img src="img/shuiguo.jpg" alt="水果忍者">
+      </a>
+      <div class="title"><a href="furit/index.html">水果忍者</a></div>
+    </li>
+	<li>
+	  <a href="chidouren/index.html">
+	    <img src="img/chidouren.jpg" alt="吃豆人">
+	  </a>
+	  <div class="title"><a href="chidouren/index.html">吃豆人</a></div>
+	</li>
+	<li>
+	  <a href="xiangqi/index.html">
+	    <img src="img/xaingqi.jpg" alt="象棋">
+	  </a>
+	  <div class="title"><a href="xiangqi/index.html">象棋</a></div>
+	</li>
+  </ul>
+
+</div>
+  <div class="back-btn">
+    <a href="#" onclick="history.back()">返回</a>
+  </div>
+</body>
+</html>

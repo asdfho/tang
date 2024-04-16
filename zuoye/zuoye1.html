@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//219970113李佳豪
+function printTriangle(rows) {//三角形
+	
+    for (let i = 1; i <= rows; i++) {
+        let str = '';
+        for (let j = 1; j <= rows - i; j++) {
+            str += '&nbsp&nbsp&nbsp';
+        }
+		document.write("</br>")
+        for (let k = 1; k <= 2 * i - 1; k++) 
+			
+            str += '&nbsp*&nbsp';
+        
+    document.write(str)
+	
+    }
+}
+var ceng = prompt("输入三角形的层数");
+printTriangle(ceng);//调用函数
+function printsquere(row,cols)	{//平行四边形
+			document.write('</br>')
+			  for (let i = 0; i < row; i++) {//行
+			        for (let j = 0; j < 10 - i; j++) {//斜率
+			            document.write("&nbsp;&nbsp")
+			        }
+			        for (let k = 0; k <cols ; k++) {//列
+			            document.write("*&nbsp;")
+			        }
+					
+			        document.write("<br>")
+			    }		
+		}
+		var row = prompt("输入行");
+		var cols = prompt("输入列");
+		printsquere(row,cols);//调用函数
+function printDiamond(rows) {//菱形
+
+	
+    for (let i = 1; i <= rows; i++) {
+        let str = '';
+        for (let j = 1; j <= rows - i; j++) {
+            str += '&nbsp&nbsp&nbsp';
+        }
+		
+		document.write("</br>")
+        for (let k = 1; k <= 2 * i - 1; k++) 
+			
+			
+            str += '&nbsp*&nbsp';
+        
+    document.write(str)
+    }
+
+    for (let i = rows - 1; i >= 1; i--) {
+        let str = '';
+        for (let j = 1; j <= rows - i; j++) {
+            str += '&nbsp&nbsp&nbsp';
+        }
+
+		document.write("</br>")
+        for (let k = 1; k <= 2 * i - 1; k++) {
+								// document.write("&nbsp")
+            str += '&nbsp*&nbsp';
+        }
+      document.write(str)
+    }
+}
+var len = prompt("输入菱形的边长");
+printDiamond(len); //调用函数
+		</script>
+	</body>
+</html>

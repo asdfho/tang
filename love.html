@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>welcome</title>
+
+        <link href="img/favicon.ico" rel="shortcut icon" class="icon-love" type="images/x-ico">
+
+        <link rel="stylesheet" href="css/love.css">
+
+        <script src="js\jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+
+        <div class="container" onselectstart="return false;" unselectable="on">
+
+            <div class="body_left">
+                <img src="img/biubiubiu.gif" alt="" ondragstart='return false;'>
+            </div>
+
+            <div class="body_center love">
+                <div class="block">
+                    <div class="div1"></div>
+                    <div class="div2"></div>
+                    <div class="div3"></div>
+                    <div class="div4"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <div class="border">
+                <div class="border-top"></div>
+                <div class="border-bottom"></div>
+            </div>
+
+            <div class="copyright">
+                <div id="createTime" style="color: #fda0a0;">
+                    
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/love.js"></script>
+
+        <script>
+            var str = getCurrentDate(new Date());
+            function getCurrentDate(date){
+                var y = date.getFullYear();
+                var m = date.getMonth()+1;
+                var d = date.getDate();
+                var h = date.getHours();
+                var min = date.getMinutes();
+                var s = date.getSeconds();
+                var str=y+'年'+(m<10?('0'+m):m)+'月'+(d<10?('0'+d):d)+'日  '+(h<10?('0'+h):h)+':'+(min<10?('0'+min):min)+':'+(s<10?('0'+s):s);
+                jQuery("#createTime").html(str);
+                setTimeout("getCurrentDate(new Date());", 1000);
+                return str;
+            }
+        </script>
+    </body>
+</html>

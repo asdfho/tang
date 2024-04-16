@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+  $(document).ready(function() {
+            $("#submitButton").click(function(event) {
+                event.preventDefault();
+
+                var playlistId = $("#playlistId").val();
+                var audioSource = $("#audioSource").val();
+				console.log(playlistId)
+				console.log(audioSource)
+
+                // 加载并替换music.js中的变量值
+                var scriptUrl = "js/music.js"; // 替换为实际的路径
+
+                function loadScript(url) {
+                    return new Promise(function(resolve, reject) {
+                        var script = document.createElement("script");
+                        script.src = url;
+                        script.onload = resolve;
+                        script.onerror = reject;
+                        document.head.appendChild(script);
+                    });
+                }
+
+                loadScript(scriptUrl)
+                    .then(function() {
+                        // 调用music.js中的函数替换变量值
+                        replaceValues(audioSource, playlistId);
+                    })
+                    .catch(function(error) {
+                        console.error("脚本加载失败", error);
+                    });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="playlistForm">
+        <input type="text" id="playlistId" name="playlistId" required placeholder="输入歌单 ID" autocomplete="off"><br>
+        <select id="audioSource" name="audioSource" required>
+            <option value="" disabled selected>选择音源</option>
+            <option value="source1">音源 1</option>
+            <option value="source2">音源 2</option>
+        </select><br>
+        <br>
+        <button id="submitButton">提交</button>
+    </form>
+</body>
+</html>
