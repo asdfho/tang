@@ -1,0 +1,22 @@
+.doc .imgBox{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-around;
+}
+.doc .imgBox div{
+    width: 25%;
+    border: 1px solid #e4ecf3;
+    box-shadow: 1px 2px 3px #f2f6f8 inset;
+    border-radius: 6px;
+    background: #fff;
+    overflow: hidden;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.doc .imgBox img{
+    display: block;
+    width: 94%;
+    margin: 4% auto;
+    border-radius: 3px;
+}

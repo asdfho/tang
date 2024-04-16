@@ -1,0 +1,98 @@
+.carousel{
+    height: 402px;
+    margin-bottom: 20px;
+}
+.layui-carousel img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.column{
+    border: 1px solid rgb(239, 239, 239);
+    margin: 20px 0 30px 0;
+}
+
+.mytitle i{
+    float: right;
+    margin-right: 10px;
+}
+
+.my-content .sub-category{
+    padding: 0 15px;
+    font-size: 23px;
+    margin-bottom: 0px;
+    height: 43px;
+    line-height: 43px;
+}
+.text{
+    text-align: center;
+    width: 946px;
+    margin: 10px auto;
+    font-size: 16px;
+    color: rgb(83, 83, 83);
+    line-height: 30px;
+}
+/* 主体的box */
+.my-content .box {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 15px auto;
+}
+.my-content .item{
+    width: 21%;
+    border: 1px solid #e4ecf3;
+    box-shadow: 1px 2px 3px #f2f6f8;
+    border-radius: 6px;
+    background: #fff;
+    padding: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.6s;
+}
+.box .item:hover {
+    transform: scale(1.06);
+}
+.my-content .item a{
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.my-content .no-logo {
+    color: #3273dc;
+    font-weight: bold;
+    font-size: 14px;
+}
+/* logo卡片 */
+.my-content .logo {
+    height: 60px;
+    position: relative;
+    font-size: 14px;
+    font-weight: 700;
+    color: #3273dc;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 .1rem;
+    margin-top: 5px;
+}
+/* 图片 */
+.my-content .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+/* 描述 */
+.my-content .desc {
+    color: gray;
+    font-size: 12px;
+    padding-top: 10px;
+    height: 35px;
+    overflow: hidden;
+}
+
