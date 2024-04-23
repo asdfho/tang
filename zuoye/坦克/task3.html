@@ -4,9 +4,25 @@
     <title>让坦克开起来</title>
     <style type="text/css">
         input{font-size:26px;margin-top: 20px;}
-        body{margin: 0;padding: 0;background-image: url(img/grassland.png);background-size: cover;}
-        #container {position: relative;width: 100%;height: 100vh;}
-        #mytank{position: absolute;left:10px;top:100px}
+        body{
+            margin: 0;
+            padding: 0;
+            background-image: url('img/grassland.png');
+            background-size: 100% 100%; /* 拉伸以填充整个页面 */
+            background-position: center; /* 背景图像居中 */
+            background-repeat: no-repeat; /* 禁止重复 */
+            height: 100vh; /* 确保背景图像覆盖整个视口高度 */
+        }
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        #mytank{
+            position: absolute;
+            left: 10px;
+            top: 100px;
+        }
     </style>
 </head>
 <body>
@@ -14,43 +30,32 @@
         <img id="mytank" src="img/right.png"/>
     </div>
     <script>
-        // 获取坦克元素
         var tank = document.getElementById('mytank');
         var container = document.getElementById('container');
-
-        // 定义坦克的初始位置和移动步长
         var tankLeft = 10;
         var tankTop = 100;
         var step = 10;
 
-        // 监听键盘事件
         document.addEventListener('keydown', function(event) {
-            // 按下上箭头键
             if (event.keyCode === 38) { // 上
                 tank.src = 'img/up.png';
                 if (tankTop - step >= 0) {
                     tankTop -= step;
                     tank.style.top = tankTop + 'px';
                 }
-            }
-            // 按下下箭头键
-            else if (event.keyCode === 40) { // 下
+            } else if (event.keyCode === 40) { // 下
                 tank.src = 'img/down.png';
                 if (tankTop + tank.offsetHeight + step <= container.clientHeight) {
                     tankTop += step;
                     tank.style.top = tankTop + 'px';
                 }
-            }
-            // 按下左箭头键
-            else if (event.keyCode === 37) { // 左
+            } else if (event.keyCode === 37) { // 左
                 tank.src = 'img/left.png';
                 if (tankLeft - step >= 0) {
                     tankLeft -= step;
                     tank.style.left = tankLeft + 'px';
                 }
-            }
-            // 按下右箭头键
-            else if (event.keyCode === 39) { // 右
+            } else if (event.keyCode === 39) { // 右
                 tank.src = 'img/right.png';
                 if (tankLeft + tank.offsetWidth + step <= container.clientWidth) {
                     tankLeft += step;
