@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>DOM操作-练习</title>
+    <style type="text/css">
+        body {
+            font-size: 13px;
+            line-height: 25px;
+        }
+
+        table {
+            border-top: 1px solid #333;
+            border-left: 1px solid #333;
+            width: 300px;
+        }
+
+        td {
+            border-right: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 增加一行
+            $("#addRow").click(function () {
+                var fRow = $("#row3");
+                var newRow = $("<tr>");
+                var col1 = $("<td>").text("幸福从天而降");
+                var col2 = $("<td>").html("&yen;18.50").attr("align", "center");
+                newRow.append(col1, col2);
+                $("#row1").parent().append(newRow);
+            });
+
+            // 修改标题样式
+            $("#updateRow").click(function () {
+                $("#row1").css({
+                    "font-weight": "bold",
+                    "text-align": "center",
+                    "background-color": "#cccccc"
+                });
+            });
+
+            // 删除第2行
+            $("#delRow").click(function () {
+                $("#row2").remove();
+            });
+
+            // 复制最后一行
+            $("#copyRow").click(function () {
+                var oldRow = $("#row3");
+                var newRow = oldRow.clone();
+                $("#myTable").append(newRow);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <table border="0" cellspacing="0" cellpadding="0" id="myTable">
+        <tr id="row1">
+            <td>书名</td>
+            <td>价格</td>
+        </tr>
+        <tr id="row2">
+            <td>看得见风景的房间</td>
+            <td class="center">&yen;30.00</td>
+        </tr>
+        <tr id="row3">
+            <td>60个瞬间</td>
+            <td class="center">&yen;32.00</td>
+        </tr>
+    </table>
+    <input id="addRow" type="button" value="增加一行" />
+    <input id="delRow" type="button" value="删除第2行" />
+    <input id="updateRow" type="button" value="修改标题样式" />
+    <input id="copyRow" type="button" value="复制最后一行" />
+</body>
+
+</html>
