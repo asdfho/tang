@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>web页面广告</title>
+    <style>
+        /* CSS 样式 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 广告弹窗样式 */
+        #ad1{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            display: none; /* 初始不显示 */
+            color: white;
+        }
+        /* 关闭按钮样式 */
+        #ad1 > .close1{
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        /* 内容区域样式 */
+        #content{
+            width: 800px;
+            height: 1000px;
+            margin: 0 auto;
+            background-color: aqua;
+        }
+        /* 对联广告样式 */
+        #ad2, #ad3{
+            position: fixed;
+            top: 30px;
+        }
+        #ad2{
+            position: absolute;
+            right: 0;
+        }
+        #ad2 > .close2{
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: white;
+        }
+        #ad3{
+            position: absolute;
+            left: 0;
+        }
+        #ad3 > .close3{
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: white;
+        }
+    </style>
+    <!-- 引入 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <!-- 对联广告 -->
+    <div id="ad2">
+        <img src='img/fruit.jpg' alt="">
+        <div class="close2">×</div>
+    </div>
+    <div id="ad3">
+        <img src='img/grape.jpg' alt="">
+        <div class="close3">×</div>
+    </div>
+    <!-- 内容区域 -->
+    <div id="content"></div>
+    <!-- 弹窗广告 -->
+    <div id="ad1">
+        <img src='img/left.png' alt="">
+        <div class="close1">×</div>
+    </div>
+    <script>
+        // JavaScript 代码
+        // 关闭弹窗广告
+        var close1 = document.querySelector(".close1"); // 获取关闭按钮元素
+        var close2 = document.querySelector(".close2");
+        var close3 = document.querySelector(".close3");
+        close1.onclick = function(){
+            ad1.style.display = "none"; // 隐藏弹窗广告
+        }
+        close2.onclick = function(){
+            ad2.style.display = "none"; // 隐藏对联广告2
+        }
+        close3.onclick = function(){
+            ad3.style.display = "none"; // 隐藏对联广告3
+        }
+        // 弹窗广告向上出现效果
+        var ad1 = document.querySelector("#ad1");
+        var timer = setInterval(function () {
+            $("#ad1").slideDown(1000); // 使用 jQuery 缓慢弹窗
+        }, 200);
+    </script>
+</body>
+</html>
