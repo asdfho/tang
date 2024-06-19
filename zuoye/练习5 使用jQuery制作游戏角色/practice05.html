@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	//219970121刘唐强A
+    <title>角色移动到点击位置</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+		body{
+			background-color: black;
+		}
+        /* 设置角色的CSS样式 */
+        #character {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-image: url('img/player3.gif'); /* 初始角色图片 */
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- 角色元素 -->
+    <div id="character"></div>
+
+    <script>
+        $(document).ready(function() {
+            // 获取角色元素
+            var $character = $('#character');
+
+            // 定义一个变量来跟踪角色是否正在移动
+            var isMoving = false;
+            // 定义一个变量来跟踪角色是否是变身状态
+            var isTransformed = false;
+
+            // 侦测右键点击事件
+            $(document).on('contextmenu', function(event) {
+                // 阻止默认右键菜单
+                event.preventDefault();
+
+                // 切换角色变身状态
+                isTransformed = !isTransformed;
+
+                // 根据角色变身状态设置角色的初始图片
+                if (isTransformed) {
+                    $character.css('background-image', 'url("img/player2.gif")');
+                    // 修改角色尺寸，以适应变身后的尺寸
+                    $character.width(200);
+                    $character.height(200);
+                } else {
+                    $character.css('background-image', 'url("img/player3.gif")');
+                    // 恢复角色尺寸
+                    $character.width(300);
+                    $character.height(300);
+                }
+            });
+
+            // 侦测用户的点击事件
+            $(document).on('click', function(event) {
+                // 如果角色正在移动，直接返回，不执行任何操作
+                if (isMoving) {
+                    return;
+                }
+
+                // 将角色移动状态设为 true，表示角色正在移动
+                isMoving = true;
+
+                // 获取点击位置的X和Y坐标
+                var clickX = event.pageX;
+                var clickY = event.pageY;
+
+                // 获取角色当前的X和Y坐标
+                var characterX = $character.offset().left;
+                var characterY = $character.offset().top;
+
+                // 判断角色应该使用的图片状态
+                if (clickX < characterX) {
+                    // 点击位置在角色的左边
+                    if (isTransformed) {
+                        // 如果角色是变身状态
+                        $character.css('background-image', 'url("img/playerbig_left.gif")');
+                    } else {
+                        $character.css('background-image', 'url("img/player_left.gif")');
+                    }
+                } else if (clickX > characterX) {
+                    // 点击位置在角色的右边
+                    if (isTransformed) {
+                        // 如果角色是变身状态
+                        $character.css('background-image', 'url("img/playerbig_right.gif")');
+                    } else {
+                        $character.css('background-image', 'url("img/player_right.gif")');
+                    }
+                }
+
+                // 移动角色到点击位置
+                $character.animate({
+                    left: clickX - $character.width() / 2,
+                    top: clickY - $character.height() / 2
+                }, 3000, function() {
+                    // 到达指定位置后恢复到初始状态
+                    if (isTransformed) {
+                        $character.css('background-image', 'url("img/player2.gif")');
+                    } else {
+                        $character.css('background-image', 'url("img/player3.gif")');
+                    }
+                    // 将角色移动状态重置为 false，表示角色已完成移动
+                    isMoving = false;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
