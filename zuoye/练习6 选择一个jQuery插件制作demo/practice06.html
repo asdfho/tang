@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+ <!-- 219970121刘唐强 -->
+<!--1、引入jquery的js文件-->
+<script src="js/jquery-3.1.1.min.js"></script>
+<!--2、引入插件的js文件-->
+<script src="jquery/jquery.color.js"></script>
+<script>
+    $(document).ready(function(){
+        //3、直接使用即可
+        $(".box").animate({
+            backgroundColor:"#64FF48",
+            width:"400px",
+            height:"400px"
+        },3000,function(){
+            alert("改变了样式");
+        });
+    });
+</script>
+</body>
+</html>

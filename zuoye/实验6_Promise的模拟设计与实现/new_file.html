@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+class MyPromise {
+    constructor(executor) {
+        this.state = 'pending';
+        this.value = undefined;
+        this.handlers = [];
+        this.catchers = [];
+
+        const resolve = (result) => {
+            if (this.state !== 'pending') return;
+            this.state = 'fulfilled';
+            this.value = result;
+            this.handlers.forEach((handler) => handler(result));
+        };
+
+        const reject = (error) => {
+            if (this.state !== 'pending') return;
+            this.state = 'rejected';
+            this.value = error;
+            this.catchers.forEach((catcher) => catcher(error));
+        };
+
+        try {
+            executor(resolve, reject);
+        } catch (err) {
+            reject(err);
+        }
+    }
+
+    then(onFulfilled, onRejected) {
+        return new MyPromise((resolve, reject) => {
+            if (this.state === 'fulfilled') {
+                if (onFulfilled) {
+                    try {
+                        resolve(onFulfilled(this.value));
+                    } catch (err) {
+                        reject(err);
+                    }
+                } else {
+                    resolve(this.value);
+                }
+            } else if (this.state === 'rejected') {
+                if (onRejected) {
+                    try {
+                        resolve(onRejected(this.value));
+                    } catch (err) {
+                        reject(err);
+                    }
+                } else {
+                    reject(this.value);
+                }
+            } else {
+                this.handlers.push((result) => {
+                    if (onFulfilled) {
+                        try {
+                            resolve(onFulfilled(result));
+                        } catch (err) {
+                            reject(err);
+                        }
+                    } else {
+                        resolve(result);
+                    }
+                });
+                this.catchers.push((error) => {
+                    if (onRejected) {
+                        try {
+                            resolve(onRejected(error));
+                        } catch (err) {
+                            reject(err);
+                        }
+                    } else {
+                        reject(error);
+                    }
+                });
+            }
+        });
+    }
+}
+	</script>
+	    <script src="aaaa.js"></script>
+</html>
